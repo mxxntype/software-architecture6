@@ -2,6 +2,10 @@
 default:
     @docker compose ps
 
+# Open up the task in a browser.
+view-task:
+    xdg-open assets/task.pdf
+
 # Fire up all services.
 start:
     docker compose up --detach
