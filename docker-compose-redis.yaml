@@ -1,0 +1,28 @@
+services:
+  redis:
+    image: redis:latest
+    hostname: redis
+    restart: on-failure
+    ports:
+      - "6379:6379"
+    volumes:
+      - type: volume
+        source: redis-data
+        target: /data
+
+  redis-insight:
+    image: redislabs/redisinsight:latest
+    hostname: redis-insight
+    depends_on:
+      - redis
+    restart: on-failure
+    ports:
+      - "8082:5540"
+    volumes:
+      - type: volume
+        source: redis-insight-data
+        target: /db
+
+volumes:
+  redis-data:
+  redis-insight-data:
