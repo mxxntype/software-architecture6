@@ -1,0 +1,33 @@
+services:
+  postgresql:
+    image: postgres:17-alpine
+    hostname: postgresql
+    restart: on-failure
+    shm_size: 128mb
+    environment:
+      - POSTGRES_USER=${SERVICE_USERNAME}
+      - POSTGRES_PASSWORD=${SERVICE_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - type: bind
+        source: ${PWD}/data/postgresql
+        target: /var/lib/postgresql/data
+
+  pgadmin:
+    image: elestio/pgadmin:latest
+    hostname: pgadmin
+    restart: on-failure
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${SERVICE_USERNAME}@mail.dev
+      - PGADMIN_DEFAULT_PASSWORD=${SERVICE_PASSWORD}
+      - PGADMIN_THEME=dark
+    ports:
+      - "8081:80"
+    volumes:
+      - type: volume
+        source: pgadmin-data
+        target: /var/lib/pgadmin
+
+volumes:
+  pgadmin-data:
