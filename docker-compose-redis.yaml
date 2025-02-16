@@ -2,6 +2,7 @@ services:
   redis:
     image: redis:latest
     hostname: redis
+    container_name: redis
     restart: on-failure
     ports:
       - "6379:6379"
@@ -13,6 +14,7 @@ services:
   redis-insight:
     image: redislabs/redisinsight:latest
     hostname: redis-insight
+    container_name: redis-insight
     depends_on:
       - redis
     restart: on-failure
