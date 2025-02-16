@@ -1,0 +1,21 @@
+services:
+  elasticsearch:
+    image: elasticsearch:8.11.3
+    hostname: elasticsearch
+    container_name: elasticsearch
+    restart: on-failure
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - xpack.security.enabled=false
+      - xpack.security.http.ssl.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - type: volume
+        source: elasticsearch-data
+        target: /usr/share/elasticsearch/data
+
+volumes:
+  elasticsearch-data:

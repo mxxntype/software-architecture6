@@ -1,3 +1,4 @@
 include:
-  - docker-compose-redis.yaml
-  - docker-compose-postgresql.yaml
+  - ./docker-compose-redis.yaml
+  - ./docker-compose-postgresql.yaml
+  - ./docker-compose-elasticsearch.yaml
