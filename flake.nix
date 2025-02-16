@@ -12,7 +12,14 @@
         inherit (pkgs) stdenv lib;
 
         buildInputs = with pkgs; [ openssl postgresql_17.lib ];
-        nativeBuildInputs = with pkgs; [ redis mongosh neo4j postgresql_17 ];
+        nativeBuildInputs = with pkgs; [
+          docker-compose-language-service
+          mongosh
+          neo4j
+          postgresql_17
+          redis
+        ];
+
         envVars = { };
 
       in {
