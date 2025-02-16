@@ -1,0 +1,55 @@
+cargo-features = ["codegen-backend"]
+
+[workspace]
+resolver = "2"
+members = ["crates/softarch_driver_test", "crates/softarch_error_layer"]
+
+[profile.dev]
+codegen-backend = "cranelift"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+correctness = "warn"
+suspicious = "warn"
+style = "warn"
+pedantic = "warn"
+nursery = "warn"
+complexity = "warn"
+perf = "warn"
+enum_glob_use = { level = "warn", priority = 1 }
+single_match_else = { level = "allow", priority = 1 }
+match_bool = { level = "allow", priority = 1 }
+
+[workspace.dependencies]
+color-eyre = "0.6.3"
+rstest = "0.24.0"
+serde = "~1"
+serde_json = "~1"
+tracing = "0.1.41"
+tracing-error = "0.2.1"
+tracing-subscriber = { version = "0.3.19", features = ["fmt", "env-filter"] }
+
+[workspace.dependencies.tokio]
+version = "1"
+default-features = false
+features = ["rt-multi-thread", "macros"]
+
+[workspace.dependencies.sqlx]
+version = "0.8"
+features = ["runtime-tokio", "postgres", "time"]
+
+[workspace.dependencies.redis]
+version = "0.29"
+
+[workspace.dependencies.mongodb]
+version = "3.2.1"
+features = []
+
+[workspace.dependencies.elasticsearch]
+version = "8.17.0-alpha.1"
+features = []
+
+[workspace.dependencies.neo4rs]
+version = "0.9.0-rc.5"

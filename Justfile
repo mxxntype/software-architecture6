@@ -4,7 +4,7 @@ alias reup := restart
 
 # List all available recipes.
 default:
-    @docker compose ps
+    @just --list
 
 # Open up the task in a browser.
 view-task:
@@ -13,7 +13,6 @@ view-task:
 # Fire up all services.
 start:
     docker compose up --detach
-    docker compose logs --follow
 
 # Bring all services to a halt.
 stop:
@@ -21,6 +20,10 @@ stop:
 
 # Shutdown and re-ignite all services.
 restart: stop start
+
+# Run all tests in the workspace.
+test:
+    cargo nextest run --workspace --no-fail-fast
 
 # Ensure correct ownership of the `./data` folder.
 [confirm]

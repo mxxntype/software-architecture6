@@ -16,8 +16,10 @@
           docker-compose-language-service
           mongosh
           neo4j
+          pkg-config
           postgresql_17
           redis
+          sqlx-cli
         ];
 
         envVars = { };

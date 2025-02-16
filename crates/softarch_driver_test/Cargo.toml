@@ -1,0 +1,19 @@
+[package]
+name = "softarch_driver_test"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[lints]
+workspace = true
+
+[dev-dependencies]
+elasticsearch.workspace = true
+mongodb.workspace = true
+neo4rs.workspace = true
+redis.workspace = true
+rstest.workspace = true
+softarch_error_layer = { version = "0.1.0", path = "../softarch_error_layer" }
+sqlx.workspace = true
+tokio.workspace = true
