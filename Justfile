@@ -1,3 +1,7 @@
+alias up := start
+alias down := stop
+alias reup := restart
+
 # List all available recipes.
 default:
     @docker compose ps
